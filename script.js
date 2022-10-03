@@ -1,5 +1,5 @@
-const clickhere = () => {
-    fetch(``)
-        .then(res => res.json())
-        .then(data => console.log(data))
-}
+// const clickhere = () => {
+//     fetch(``)
+//         .then(res => res.json())
+//         .then(data => console.log(data))
+// }
