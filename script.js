@@ -19,8 +19,12 @@ const clickCategory = (id) => {
         .then(res => res.json())
         .then(data => loadNews(data.data))
         .catch(error => console.log(error))
+    const spin = document.getElementById("spin")
+    spin.classList.remove("hidden")
 }
 const loadNews = (newses) => {
+    console.log(newses)
+    spin.classList.add("hidden")
     const getNews = document.getElementById('news-container');
     getNews.innerHTML = ''
     newses.forEach(news => {
@@ -42,7 +46,7 @@ const loadNews = (newses) => {
                     </div>
                 </div>
                 <div>
-                    <p><i class="fa-solid fa-eye"></i>${total_view}</p>
+                    <p><i class="fa-solid fa-eye"></i>${total_view ? total_view : "N/A"}</p>
                 </div>
                 <label for="my-modal-4" class="btn modal-button" onclick="getModal('${news._id}')">Watch</label>
             </div>
@@ -75,7 +79,7 @@ const setModal = modalData => {
         <label class="" for="">
                 <img class="h-64 w-52" src="${thumbnail_url}" alt="Movie" />
                 <h2 class="card-title">${title}</h2>
-                <p >${details}</p>
+                <p>${details}</p>
                 <div class="flex justify-evenly items-center">
                     <div class="flex">
                         <img class="w-9 mr-3" src="${author.img}" alt="">
@@ -85,7 +89,7 @@ const setModal = modalData => {
                         </div>
                     </div>
                     <div>
-                        <p><i class="fa-solid fa-eye"></i>${total_view}</p>
+                        <p><i class="fa-solid fa-eye"></i>${total_view ? total_view : "N/A"}</p>
                     </div>
                 </div>
             </label>
