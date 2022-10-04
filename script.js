@@ -24,14 +24,17 @@ const clickCategory = (id) => {
 }
 const loadNews = (newses) => {
     console.log(newses)
-    spin.classList.add("hidden")
-    const getNews = document.getElementById('news-container');
-    getNews.innerHTML = ''
-    newses.forEach(news => {
-        const { author, thumbnail_url, title, details, total_view } = news;
-        const div = document.createElement('div');
-        div.classList.add('card', 'card-side', 'bg-base-100', 'shadow-xl');
-        div.innerHTML = `
+    if (newses.length > 0) {
+        const getFound = document.getElementById('data-found');
+        getFound.innerText = newses.length;
+        spin.classList.add("hidden")
+        const getNews = document.getElementById('news-container');
+        getNews.innerHTML = ''
+        newses.forEach(news => {
+            const { author, thumbnail_url, title, details, total_view } = news;
+            const div = document.createElement('div');
+            div.classList.add('card', 'card-side', 'bg-base-100', 'shadow-xl');
+            div.innerHTML = `
         <figure><img class="h-64 w-52" src="${thumbnail_url}" alt="Movie" /></figure>
         <div class="card-body">
             <h2 class="card-title">${title}</h2>
@@ -55,9 +58,23 @@ const loadNews = (newses) => {
 
           
         `
-        getNews.appendChild(div);
-        // console.log(news);
-    })
+            getNews.appendChild(div);
+            // console.log(news);
+        })
+    }
+    else {
+        spin.classList.add("hidden")
+        const getFound = document.getElementById('data-found');
+        getFound.innerText = 0;
+        const getid = document.getElementById('news-container');
+        getid.innerHTML = ""
+        const div = document.createElement('div');
+        div.classList.add('col-span-2')
+        div.innerHTML = `
+        <h2 class="text-center text-xl font-bold">no data found</h2>
+        `
+        getid.appendChild(div);
+    }
 
 }
 
