@@ -23,7 +23,7 @@ const clickCategory = (id) => {
     spin.classList.remove("hidden")
 }
 const loadNews = (newses) => {
-    console.log(newses)
+    newses.sort((a, b) => { a.title > b.title ? -1 : 1 })
     if (newses.length > 0) {
         const getFound = document.getElementById('data-found');
         getFound.innerText = newses.length;
