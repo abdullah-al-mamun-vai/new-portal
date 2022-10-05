@@ -9,6 +9,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/e910be2420.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'sm': { 'max': '639px' },
+                    },
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .card-p-style {
             overflow: hidden;
@@ -51,7 +65,7 @@
                 </h2>
             </section>
             <!-- shorting -->
-            <section class="flex justify-between py-4">
+            <section class="flex justify-between sm:flex-col sm:items-center py-4">
                 <div class="flex items-center">
                     <p class="pl-2">Sort By View:</p>
                     <select disabled>
@@ -70,7 +84,7 @@
             </section>
             <!-- card area start  -->
 
-            <section class="grid grid-cols-2 gap-3 my-16" id="news-container">
+            <section class="grid lg:grid-cols-2 md:grid-cols-1 gap-3 my-16" id="news-container">
 
             </section>
             <!-- modal  -->
@@ -82,7 +96,11 @@
             </section>
         </main>
     </div>
-
+    <footer>
+        <div class="container mx-auto">
+            <p class="text-center capitalize">all &copy;right reserved 2022</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 

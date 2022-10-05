@@ -33,14 +33,14 @@ const loadNews = (newses) => {
         newses.forEach(news => {
             const { author, thumbnail_url, title, details, total_view } = news;
             const div = document.createElement('div');
-            div.classList.add('card', 'card-side', 'bg-base-100', 'shadow-xl');
+            div.classList.add('card', 'card-side', 'bg-base-100', 'shadow-xl', 'sm:flex-col', 'md:flex-row', 'lg:flex-row');
             div.innerHTML = `
-        <figure><img class="h-64 w-52" src="${thumbnail_url}" alt="Movie" /></figure>
+        <figure><img class="h-64 w-52 sm:w-10/12" src="${thumbnail_url}" alt="Movie" /></figure>
         <div class="card-body">
             <h2 class="card-title">${title}</h2>
             <p class="card-p-style">${details ? details.slice(0, 100) : "no text found"}</p>
 
-            <div class="card-actions justify-between items-center">
+            <div class="card-actions justify-between sm:flex-col items-center">
                 <div class="flex">
                     <img class="w-9 mr-3" src="${author.img}" alt="">
                     <div>
@@ -49,7 +49,7 @@ const loadNews = (newses) => {
                     </div>
                 </div>
                 <div>
-                    <p><i class="fa-solid fa-eye"></i>${total_view ? total_view : "N/A"}</p>
+                    <p><i class="fa-solid fa-eye mr-1"></i>${total_view ? total_view : "N/A"}</p>
                 </div>
                 <label for="my-modal-4" class="btn modal-button" onclick="getModal('${news._id}')">Watch</label>
             </div>
@@ -106,7 +106,7 @@ const setModal = modalData => {
                         </div>
                     </div>
                     <div>
-                        <p><i class="fa-solid fa-eye"></i>${total_view ? total_view : "N/A"}</p>
+                        <p><i class="fa-solid fa-eye mr-1"></i>${total_view ? total_view : "N/A"}</p>
                     </div>
                 </div>
             </label>
